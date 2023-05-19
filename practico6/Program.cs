@@ -1,4 +1,4 @@
-﻿//ejercicio 3
+//ejercicio 3
 float num1,num2;
 int op = 1;
 
