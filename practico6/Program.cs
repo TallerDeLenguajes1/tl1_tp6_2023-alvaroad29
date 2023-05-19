@@ -1,37 +1,73 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿//ejercicio 4
+//int numero;
+Console.WriteLine("Ingrese una cadena de texto");
+string texto = Console.ReadLine(); //Guardo la cadena
+// while (!int.TryParse(numeroString,out numero)) //si es un numero devuelve true y guarda el numero en "numero",si no es un numero devuelve false
+// {
+//     Console.WriteLine("Numero ingresado no valido");
+//     Console.WriteLine("Ingrese un numero");
+//     numeroString = Console.ReadLine();    
+// }
 
-//int a;
+//longitud
+int longitud = texto.Length;
+Console.WriteLine("Longitud de la cadena ingresada: "+ longitud);
 
-//int b;
+//ingreso otra cadena y concateno
+Console.WriteLine("Ingrese otra cadena de texto");
+string texto1 = Console.ReadLine(); //Guardo la cadena
+string concatenada = string.Concat(texto,texto1);
+//string concatenada = texto + texto1;
+Console.WriteLine("Cadena concatenada: "+ concatenada);
 
-//a = 10;
+//subcadena
+int inicio,fin;
+Console.WriteLine($"Ingrese el indice de inicio de la subcadena: {concatenada}");
+inicio = int.Parse(Console.ReadLine());
+Console.WriteLine($"Ingrese la longitud de la subcadena a partir del inicio: {concatenada}");
+fin = int.Parse(Console.ReadLine());
+string subcadena = concatenada.Substring(inicio,fin); // longitud representar el indice desde el q obtendra la subcadena
+Console.WriteLine($"Subcadena de la cadena {concatenada}: {subcadena}");
 
-//b = a;
-
-//Console.WriteLine("Valor de a:"+a);
-
-//Console.WriteLine("Valor de b:"+b);
-
-//ejercicio 1
-int numero;
-Console.WriteLine("Ingrese un numero");
-string numeroString = Console.ReadLine(); //leo el numero
-while (!int.TryParse(numeroString,out numero)) //si es un numero devuelve true y guarda el numero en "numero",si no es un numero devuelve false
+//recorro la cadena
+foreach (char caracter in subcadena) //caracter: donde se van guardando, subcadena: nombre del string que recorro
 {
-    Console.WriteLine("Numero ingresado no valido");
-    Console.WriteLine("Ingrese un numero");
-    numeroString = Console.ReadLine();    
+    Console.WriteLine(caracter);
 }
 
-int resto = 0,divisor = numero,i=10,invertido = 0;
-
-do
+//buscar la ocurrencia de una palabra determinada en la cadena ingresada
+int i = 0;
+string[] palabras = concatenada.Split(' '); //separo la cadena en subcadenas usando el espacio como separados
+Console.WriteLine("Ingrese la palabra buscada en la cadena :"+concatenada);
+string buscada = Console.ReadLine(); //Guardo la cadena
+foreach (string item in palabras)
 {
-    resto = divisor % 10;
-    divisor = divisor / 10;
-    invertido = invertido * i + resto;
-} while (divisor > 0);
+    if (buscada == item)
+    {
+        i++;
+    }
+}
+Console.WriteLine("Ocurrencia de la palabra {0} en la cadena {1} : {2}",buscada,subcadena,i);
 
-Console.WriteLine("Numero ingresado:"+numero);
-Console.WriteLine("Numero invertido:"+invertido);
+// o tambien si esta o no esta una secuencia de letras
+Console.WriteLine("Ingrese la palabra buscada en la cadena :"+concatenada);
+buscada  = Console.ReadLine();
+bool contienePalabra = concatenada.Contains(buscada); //devuelve true o false
+Console.WriteLine("La cadena contiene la palabra buscada: " + contienePalabra);
+
+
+//Mayusculas y minusculas
+string cadenaMayuscula = concatenada.ToUpper();
+
+string cadenaMinuscula = concatenada.ToLower();
+
+Console.WriteLine("Cadena en mayusculas : " + cadenaMayuscula);
+Console.WriteLine("Cadena en minusculas : " + cadenaMinuscula);
+
+//ecuacion y split
+Console.WriteLine("Ingrese una ecuacion (suma sin espacios): ej 2+2");
+string ecuacion =Console.ReadLine();
+string[] ecSeparada = ecuacion.Split('+');
+Console.WriteLine("El resultado es : " + (double.Parse(ecSeparada[0]) + double.Parse(ecSeparada[1])));
+
+
